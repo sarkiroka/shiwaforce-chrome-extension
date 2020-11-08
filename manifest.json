@@ -1,0 +1,42 @@
+{
+	"name": "ShiwaForce",
+	"version": "1.0",
+	"description": "ShiwaForce extension",
+	"permissions": [
+		"storage",
+		"tabs",
+		"activeTab",
+		"https://www.shiwaforce.com/blog/feed/"
+	],
+	"background": {
+		"scripts": [
+			"shiwaforce-common-background.js",
+			"statusapp/shiwaforce-statusapp-background.js",
+			"blog/shiwaforce-blog-background.js"
+		],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://go.statusapp.online/*"],
+			"run_at": "document_start",
+			"js": ["statusapp/statusapp-content-script.js"]
+		}
+	],
+	"browser_action": {
+		"default_popup": "shiwaforce-settings.html",
+		"default_icon": {
+			"16": "images/sf-logo-16.png",
+			"32": "images/sf-logo-32.png",
+			"48": "images/sf-logo-48.png",
+			"128": "images/sf-logo-128.png"
+		}
+	},
+	"icons": {
+		"16": "images/sf-logo-16.png",
+		"32": "images/sf-logo-32.png",
+		"48": "images/sf-logo-48.png",
+		"128": "images/sf-logo-128.png"
+	},
+	"manifest_version": 2
+}

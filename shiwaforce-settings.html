@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hu">
+	<head>
+		<title>ShiwaForce extension settings</title>
+		<meta charset="UTF-8" />
+		<script src="shiwaforce-settings.js"></script>
+		<link rel="stylesheet" href="shiwaforce-settings.css" />
+	</head>
+
+	<body>
+		<nav>
+			<ul>
+				<li class="blog">
+					<a href="#settings" rel="settings">Blog</a>
+					<a href="#open-in-new-tab" rel="open" title="Blog nyitása új alpon">
+						<svg class="logo icon" viewBox="0 0 24 24"><use xlink:href="#open-in-new-tab"></use></svg>
+					</a>
+				</li>
+				<li class="statusapp">
+					<a href="#settings" rel="settings">StatusApp</a>
+					<a href="#open-in-new-tab" rel="open" title="StatusApp nyitása új lapon">
+						<svg viewBox="0 0 24 24"><use xlink:href="#open-in-new-tab"></use></svg>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<section id="settings">
+			hello
+		</section>
+		<section id="statusapp">
+			<h1>StatusApp</h1>
+			<div>
+				<div class="settings-column">
+					<div class="settings-row">
+						<label for="statusapp-color">Egyéni színek</label>
+						<select id="statusapp-color"></select>
+						<button id="statusapp-force-refresh" title="Témák listájának frissítése (akkor hasznos, ha témát fejlesztesz éppen)">
+							<svg viewBox="0 0 24 24"><use xlink:href="#sync"></use></svg>
+						</button>
+					</div>
+					<div class="settings-row">
+						<button id="clear-statusapp-data" title="Minden StatusApp-al kapcsolatban tárolt adat törlése">Adatok törlése</button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="blog">
+			<h1>Blog</h1>
+			<div>
+				<div class="setting-column">
+					<div class="settings-row">
+						<button id="clear-blog-data" title="Minden ShiwaForce bloggal kapcsolatban tárolt adat törlése">Adatok törlése</button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="hidden">
+			<svg>
+				<g id="open-in-new-tab">
+					<path d="M0 0h24v24H0z" fill="none"/>
+					<path fill="currentColor" d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+				</g>
+				<g id="sync">
+					<path d="M0 0h24v24H0z" fill="none"/>
+					<path fill="currentColor" d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+				</g>
+			</svg>
+		</div>
+	</body>
+</html>
