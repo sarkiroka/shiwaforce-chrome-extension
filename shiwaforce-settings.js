@@ -19,6 +19,8 @@ function onReady() {
 
 
 	document.querySelector('nav .statusapp [rel="open"]').addEventListener('click', () => {
+		document.querySelector('nav ul li.statusapp').classList.remove('new');
+		chrome.runtime.sendMessage({action: 'statusappOpen', data: {}});
 		chrome.tabs.create({url: 'https://go.statusapp.online'});
 	});
 
@@ -26,6 +28,12 @@ function onReady() {
 		document.querySelector('nav ul li.blog').classList.remove('new');
 		chrome.runtime.sendMessage({action: 'blogOpen', data: {}});
 		chrome.tabs.create({url: 'https://www.shiwaforce.com/blog/'});
+	});
+
+	document.querySelector('nav .career [rel="open"]').addEventListener('click', () => {
+		document.querySelector('nav ul li.career').classList.remove('new');
+		chrome.runtime.sendMessage({action: 'careerOpen', data: {}});
+		chrome.tabs.create({url: 'https://www.shiwaforce.com/karrier/#openedPositions'});
 	});
 
 	document.querySelector('nav .statusapp [rel="settings"]').addEventListener('click', () => {
@@ -37,6 +45,10 @@ function onReady() {
 		showSection('blog');
 	});
 
+	document.querySelector('nav .career [rel="settings"]').addEventListener('click', () => {
+		showSection('career');
+	});
+
 	document.querySelector('#clear-statusapp-data').addEventListener('click', () => {
 		if (confirm('Tényleg minden tárolt adatot szeretnél törölni?')) {
 			chrome.runtime.sendMessage({action: 'statusappClearData', data: {}});
@@ -46,6 +58,12 @@ function onReady() {
 	document.querySelector('#clear-blog-data').addEventListener('click', () => {
 		if (confirm('Tényleg minden tárolt adatot szeretnél törölni?')) {
 			chrome.runtime.sendMessage({action: 'blogClearData', data: {}});
+		}
+	});
+
+	document.querySelector('#clear-career-data').addEventListener('click', () => {
+		if (confirm('Tényleg minden tárolt adatot szeretnél törölni?')) {
+			chrome.runtime.sendMessage({action: 'careerClearData', data: {}});
 		}
 	});
 
@@ -80,6 +98,10 @@ function onReady() {
 		document.querySelector('nav ul li.blog').classList.add('new');
 	}
 
+	function onNewCareerEntryFound(message){
+		document.querySelector('nav ul li.career').classList.add('new');
+	}
+
 	showSection('settings');
 	chrome.runtime.sendMessage({action: 'blogGetNotifications', data: {}});
 
@@ -90,6 +112,9 @@ function onReady() {
 				break;
 			case 'blogNewEntryFound':
 				onNewBlogEntryFound(message);
+				break;
+			case 'careerNewEntryFound':
+				onNewCareerEntryFound(message);
 				break;
 			default:
 				console.warn('unknown command in popup "'+message.action+'"', message);

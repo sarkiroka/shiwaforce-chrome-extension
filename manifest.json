@@ -12,7 +12,7 @@
 		"scripts": [
 			"shiwaforce-common-background.js",
 			"statusapp/shiwaforce-statusapp-background.js",
-			"blog/shiwaforce-blog-background.js"
+			"blog/shiwaforce-webpage-background.js"
 		],
 		"persistent": false
 	},
