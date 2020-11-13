@@ -18,34 +18,34 @@ function onReady() {
 	}
 
 
-	document.querySelector('nav .statusapp [rel="open"]').addEventListener('click', () => {
-		document.querySelector('nav ul li.statusapp').classList.remove('new');
+	document.querySelector('nav .js-statusapp [rel="open"]').addEventListener('click', () => {
+		document.querySelector('nav ul li.js-statusapp').classList.remove('js-new');
 		chrome.runtime.sendMessage({action: 'statusappOpen', data: {}});
 		chrome.tabs.create({url: 'https://go.statusapp.online'});
 	});
 
-	document.querySelector('nav .blog [rel="open"]').addEventListener('click', () => {
-		document.querySelector('nav ul li.blog').classList.remove('new');
+	document.querySelector('nav .js-blog [rel="open"]').addEventListener('click', () => {
+		document.querySelector('nav ul li.js-blog').classList.remove('js-new');
 		chrome.runtime.sendMessage({action: 'blogOpen', data: {}});
 		chrome.tabs.create({url: 'https://www.shiwaforce.com/blog/'});
 	});
 
-	document.querySelector('nav .career [rel="open"]').addEventListener('click', () => {
-		document.querySelector('nav ul li.career').classList.remove('new');
+	document.querySelector('nav .js-career [rel="open"]').addEventListener('click', () => {
+		document.querySelector('nav ul li.js-career').classList.remove('js-new');
 		chrome.runtime.sendMessage({action: 'careerOpen', data: {}});
 		chrome.tabs.create({url: 'https://www.shiwaforce.com/karrier/#openedPositions'});
 	});
 
-	document.querySelector('nav .statusapp [rel="settings"]').addEventListener('click', () => {
+	document.querySelector('nav .js-statusapp [rel="settings"]').addEventListener('click', () => {
 		chrome.runtime.sendMessage({action: 'statusappGetData', data: {}});
 		showSection('statusapp');
 	});
 
-	document.querySelector('nav .blog [rel="settings"]').addEventListener('click', () => {
+	document.querySelector('nav .js-blog [rel="settings"]').addEventListener('click', () => {
 		showSection('blog');
 	});
 
-	document.querySelector('nav .career [rel="settings"]').addEventListener('click', () => {
+	document.querySelector('nav .js-career [rel="settings"]').addEventListener('click', () => {
 		showSection('career');
 	});
 
@@ -95,11 +95,11 @@ function onReady() {
 	}
 
 	function onNewBlogEntryFound(message){
-		document.querySelector('nav ul li.blog').classList.add('new');
+		document.querySelector('nav ul li.js-blog').classList.add('js-new');
 	}
 
 	function onNewCareerEntryFound(message){
-		document.querySelector('nav ul li.career').classList.add('new');
+		document.querySelector('nav ul li.js-career').classList.add('js-new');
 	}
 
 	showSection('settings');

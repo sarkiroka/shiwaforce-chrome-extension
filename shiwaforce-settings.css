@@ -25,7 +25,6 @@ body {
 }
 
 section {
-	display: none;
 	padding: 8px 8px 8px 4px;
 	width: 100%;
 }
@@ -70,6 +69,7 @@ nav ul li.active, nav ul li.active svg {
 	color: var(--black);
 
 }
+
 nav ul li.active {
 	border-left: 4px solid var(--gray);
 	font-weight: bold;
@@ -77,8 +77,8 @@ nav ul li.active {
 	padding-left: 4px;
 }
 
-section.active {
-	display: block;
+section:not(.active) {
+	display: none;
 }
 
 section > div {
@@ -99,11 +99,12 @@ section > div {
 nav li a[rel="open"] {
 	position: relative;
 }
-nav li.new a[rel="open"]:after {
+
+nav li.js-new a[rel="open"]:after {
 	background: var(--shiwaforce);
 	border-radius: 50%;
 	content: '';
-	display:block;
+	display: block;
 	height: 10px;
 	opacity: .5;
 	position: absolute;
@@ -111,4 +112,15 @@ nav li.new a[rel="open"]:after {
 	top: 1px;
 	z-index: -1;
 	width: 10px;
+}
+
+.settings-welcome {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin-left: -16px;
+}
+
+.settings-welcome img {
+	opacity: 0.1;
 }
