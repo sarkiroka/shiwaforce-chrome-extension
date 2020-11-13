@@ -65,19 +65,19 @@ nav ul li a svg {
 	width: 13px;
 }
 
-nav ul li.active, nav ul li.active svg {
+nav ul li.js-active, nav ul li.js-active svg {
 	color: var(--black);
 
 }
 
-nav ul li.active {
+nav ul li.js-active {
 	border-left: 4px solid var(--gray);
 	font-weight: bold;
 	margin-left: -8px;
 	padding-left: 4px;
 }
 
-section:not(.active) {
+section:not(.js-active) {
 	display: none;
 }
 

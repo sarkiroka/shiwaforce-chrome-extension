@@ -4,17 +4,17 @@ function onReady() {
 
 	function hideSections() {
 		Array.from(document.querySelectorAll('body > section')).forEach(section => {
-			section.classList.remove('active');
+			section.classList.remove('js-active');
 		});
 		Array.from(document.querySelectorAll('body > nav > ul > li')).forEach(navItem => {
-			navItem.classList.remove('active');
+			navItem.classList.remove('js-active');
 		});
 	}
 
 	function showSection(sectionName) {
 		hideSections();
-		document.querySelector(`nav li.${sectionName}`)?.classList?.add('active');
-		document.querySelector(`#${sectionName}`)?.classList?.add('active');
+		document.querySelector(`nav li.${sectionName}`)?.classList?.add('js-active');
+		document.querySelector(`#${sectionName}`)?.classList?.add('js-active');
 	}
 
 
