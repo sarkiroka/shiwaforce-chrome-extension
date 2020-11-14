@@ -2,15 +2,21 @@
 	"name": "ShiwaForce",
 	"version": "1.0",
 	"description": "ShiwaForce extension",
+	"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1OFJhe24NI6iWwUOU17Q8wuuLDOGUXIPstwjBcBnH/jl63efj4EUSVPUV6J244W1a6XPw0z3q5wfPgqPhAukcH0nrd2bybqHZDblGd4N4shYIzhHnEYtKHhaWZ9axfzcXUyyB+b2C7KSrGOGrFq8hp/VrzmkasSByD0pgw9W5A0Hy3ok2PeNXBJ5fIjsCCR/RbJ50KcNRDyEzCC8SH7ASa7rubH8haZo0dNk71D0jayl38A2snuyqKRcwSy5wQaaW7icIzaK5uX4iEFa1H98iArROhIqMq0sPfV4QCTpvDZyTjICwkjK16cQf1V0CMK0cj2pGrJAryntQGbxNlgAdQIDAQAB",
+	"oauth2": {
+		"client_id": "963199770060-hvs5gojsaj8b49o4civ5qtetcr1gtbcr.apps.googleusercontent.com",
+		"scopes": ["https://www.googleapis.com/auth/userinfo.email"]
+	},
 	"permissions": [
 		"storage",
 		"tabs",
 		"activeTab",
+		"identity",
 		"https://www.shiwaforce.com/blog/feed/"
 	],
 	"background": {
 		"scripts": [
-			"shiwaforce-common-background.js",
+			"common/shiwaforce-common-background.js",
 			"statusapp/shiwaforce-statusapp-background.js",
 			"blog/shiwaforce-webpage-background.js"
 		],

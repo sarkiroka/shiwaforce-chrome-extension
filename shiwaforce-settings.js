@@ -94,11 +94,11 @@ function onReady() {
 		});
 	}
 
-	function onNewBlogEntryFound(message){
+	function onNewBlogEntryFound(message) {
 		document.querySelector('nav ul li.js-blog').classList.add('js-new');
 	}
 
-	function onNewCareerEntryFound(message){
+	function onNewCareerEntryFound(message) {
 		document.querySelector('nav ul li.js-career').classList.add('js-new');
 	}
 
@@ -117,7 +117,22 @@ function onReady() {
 				onNewCareerEntryFound(message);
 				break;
 			default:
-				console.warn('unknown command in popup "'+message.action+'"', message);
+				console.warn('unknown command in popup "' + message.action + '"', message);
+		}
+	});
+
+	var authToken = null;
+	document.querySelector('#loginButton').addEventListener('click', function () {
+		chrome.identity.getAuthToken({interactive: true}, function (token) {
+			authToken = token;
+			alert(token);
+		});
+	});
+	document.querySelector('#clearLoginData').addEventListener('click', function () {
+		if (authToken) {
+			var url = 'https://accounts.google.com/o/oauth2/revoke?token=' + authToken;
+			window.fetch(url);
+			chrome.identity.removeCachedAuthToken({token: authToken});
 		}
 	});
 
