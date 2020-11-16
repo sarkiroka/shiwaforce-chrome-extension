@@ -1,6 +1,7 @@
 function onReady() {
 	let statusappThemes = [];
 	let statusappSelectedTheme = null;
+	var authToken = null;
 
 	function hideSections() {
 		Array.from(document.querySelectorAll('body > section')).forEach(section => {
@@ -102,8 +103,39 @@ function onReady() {
 		document.querySelector('nav ul li.js-career').classList.add('js-new');
 	}
 
+	function onWelcomeLoginStateFound(message) {
+		if (!authToken) {
+			authToken = message.data.token;
+		}
+		if (authToken) {
+			document.getElementById('token').style.display='block';
+			document.querySelector('body').classList.add('js-sf');
+		} else {
+			document.querySelector('body').classList.remove('js-sf');
+		}
+	}
+	document.getElementById('token').style.display='none';
+
 	showSection('settings');
 	chrome.runtime.sendMessage({action: 'blogGetNotifications', data: {}});
+
+	chrome.runtime.sendMessage({action: 'welcomeGetLoginState', data: {}});
+	document.querySelector('#loginButton').addEventListener('click', function () {
+		chrome.identity.getAuthToken({interactive: true}, function (token) {
+			authToken = token;
+			chrome.runtime.sendMessage({action: 'welcomeLoginSuccess', data: {token}});
+			document.querySelector('body').classList.add('js-sf');
+		});
+	});
+	document.querySelector('#clearLoginData').addEventListener('click', function () {
+		if (authToken) {
+			var url = 'https://accounts.google.com/o/oauth2/revoke?token=' + authToken;
+			window.fetch(url);
+			chrome.identity.removeCachedAuthToken({token: authToken});
+			chrome.runtime.sendMessage({action: 'welcomeLogout', data: {}});
+			document.querySelector('body').classList.remove('js-sf');
+		}
+	});
 
 	chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 		switch (message.action) {
@@ -116,23 +148,11 @@ function onReady() {
 			case 'careerNewEntryFound':
 				onNewCareerEntryFound(message);
 				break;
+			case 'welcomeLoginStateFound':
+				onWelcomeLoginStateFound(message);
+				break;
 			default:
 				console.warn('unknown command in popup "' + message.action + '"', message);
-		}
-	});
-
-	var authToken = null;
-	document.querySelector('#loginButton').addEventListener('click', function () {
-		chrome.identity.getAuthToken({interactive: true}, function (token) {
-			authToken = token;
-			alert(token);
-		});
-	});
-	document.querySelector('#clearLoginData').addEventListener('click', function () {
-		if (authToken) {
-			var url = 'https://accounts.google.com/o/oauth2/revoke?token=' + authToken;
-			window.fetch(url);
-			chrome.identity.removeCachedAuthToken({token: authToken});
 		}
 	});
 

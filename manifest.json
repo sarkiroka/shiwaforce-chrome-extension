@@ -10,13 +10,13 @@
 	"permissions": [
 		"storage",
 		"tabs",
-		"activeTab",
 		"identity",
 		"https://www.shiwaforce.com/blog/feed/"
 	],
 	"background": {
 		"scripts": [
 			"common/shiwaforce-common-background.js",
+			"welcome/shiwaforce-welcome-background.js",
 			"statusapp/shiwaforce-statusapp-background.js",
 			"blog/shiwaforce-webpage-background.js"
 		],

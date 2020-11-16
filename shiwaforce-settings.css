@@ -124,3 +124,15 @@ nav li.js-new a[rel="open"]:after {
 .settings-welcome img {
 	opacity: 0.1;
 }
+
+/* logged in state */
+
+body.js-sf nav .js-career { /* aki be van lépve, annak nem fontos a karrier oldal */
+	display: none;
+}
+
+body:not(.js-sf) nav .js-jira { /* aki nincs belépve, annak nem fontos a jira */
+	display: none;
+}
+
+/* /logged in state */
