@@ -108,13 +108,11 @@ function onReady() {
 			authToken = message.data.token;
 		}
 		if (authToken) {
-			document.getElementById('token').style.display='block';
 			document.querySelector('body').classList.add('js-sf');
 		} else {
 			document.querySelector('body').classList.remove('js-sf');
 		}
 	}
-	document.getElementById('token').style.display='none';
 
 	showSection('settings');
 	chrome.runtime.sendMessage({action: 'blogGetNotifications', data: {}});
